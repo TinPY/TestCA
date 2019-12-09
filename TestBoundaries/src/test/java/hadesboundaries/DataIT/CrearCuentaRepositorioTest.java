@@ -9,12 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
+import testboundaries.TestBoundariesApplication;
 import testboundaries.data.persistencia.implementacionCRUD.CrearCuentaRepositorioCRUDImplementacion;
 
 import java.time.LocalDateTime;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes={TestBoundariesApplication.class})
 public class CrearCuentaRepositorioTest {
 
     @Autowired
@@ -26,6 +27,7 @@ public class CrearCuentaRepositorioTest {
 
         Cuenta cuenta = Cuenta.instancia(1,"martinpy", LocalDateTime.now(),"Tincho","asdasd");
         Assertions.assertTrue(true);
+
 
     }
 
