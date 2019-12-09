@@ -26,4 +26,8 @@ hs_err_pid*
 
 .idea/
 
+TestCore/target/
+TestAdapter/target/
+TestBoundaries/target/
+
 *.iml
