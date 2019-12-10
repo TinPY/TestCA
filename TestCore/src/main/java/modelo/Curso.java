@@ -11,21 +11,23 @@ public class Curso {
 	private String titulo;
 	private Collection<Cuenta> inscriptos;
 	private LocalDateTime fechaLimiteInscripcion;
+	private Integer puntos;
 	
-	private Curso(Integer idCurso, String titulo, Collection<Cuenta> inscriptos, LocalDateTime fechaLimiteInscripcion) {
+	private Curso(Integer idCurso, String titulo, Collection<Cuenta> inscriptos, LocalDateTime fechaLimiteInscripcion, Integer puntos) {
 		super();
 		this.idCurso = idCurso;
 		this.titulo = titulo;
 		this.inscriptos = inscriptos;
 		this.fechaLimiteInscripcion = fechaLimiteInscripcion;
+		this.puntos = puntos;
 	}
 	
-	public static Curso instancia(Integer idCurso, String titulo, Collection<Cuenta> inscriptos, LocalDateTime fechaLimiteInscripcion) throws CursoIncompletoException {
+	public static Curso instancia(Integer idCurso, String titulo, Collection<Cuenta> inscriptos, LocalDateTime fechaLimiteInscripcion,Integer puntos) throws CursoIncompletoException {
 		if(titulo.isEmpty() || inscriptos == null || fechaLimiteInscripcion == null ) {
 			throw new CursoIncompletoException();
 		}
 		
-		return new Curso(idCurso,titulo,inscriptos,fechaLimiteInscripcion);
+		return new Curso(idCurso,titulo,inscriptos,fechaLimiteInscripcion,puntos);
 	}
 
 	public Integer getIdCurso() {
@@ -43,10 +45,8 @@ public class Curso {
 	public LocalDateTime getFechaLimiteInscripcion() {
 		return fechaLimiteInscripcion;
 	}
-	
 
-	
-	
-	
-	
+	public Integer getPuntos() {
+		return puntos;
+	}
 }

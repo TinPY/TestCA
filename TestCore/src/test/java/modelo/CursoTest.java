@@ -15,18 +15,18 @@ public class CursoTest {
     @Test
     public void instanciaCurso_DatosCompletos_InstanciaCorrecto() throws CursoIncompletoException {
 
-        Curso curso = Curso.instancia(1,"Informatica",factoryCuentas(),LocalDateTime.now());
+        Curso curso = Curso.instancia(1,"Informatica",factoryCuentas(),LocalDateTime.now(),95);
         Assertions.assertNotNull(curso);
     }
 
     @Test
     public void instanciaCurso_DatosIncompletos_ArrojaExcepcionCursoIncompleto(){
-        Assertions.assertThrows(CursoIncompletoException.class, () -> Curso.instancia(1,"",factoryCuentas(),LocalDateTime.now()));
+        Assertions.assertThrows(CursoIncompletoException.class, () -> Curso.instancia(1,"",factoryCuentas(),LocalDateTime.now(),95));
     }
 
     @Test
     public void instanciaCurso_ColeccionNula_ArrojaExcepcionCursoIncompleto(){
-        Assertions.assertThrows(CursoIncompletoException.class, () -> Curso.instancia(1,"",null,LocalDateTime.now()));
+        Assertions.assertThrows(CursoIncompletoException.class, () -> Curso.instancia(1,"",null,LocalDateTime.now(),95));
     }
 
 
