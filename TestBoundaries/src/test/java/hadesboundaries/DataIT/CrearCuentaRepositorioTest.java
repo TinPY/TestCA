@@ -26,9 +26,6 @@ public class CrearCuentaRepositorioTest {
     public void CrearCuenta_DatosCorrectos_CreaCorrectamente() throws CuentaIncompletaException {
 
         Cuenta cuenta = Cuenta.instancia(1,"martinpy", LocalDateTime.now(),"Tincho","asdasd");
-        Assertions.assertTrue(true);
-
-
+        Assertions.assertTrue(crearCuentaRepositorioCRUDImplementacion.persist(cuenta));
     }
-
 }
