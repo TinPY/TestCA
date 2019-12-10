@@ -14,7 +14,6 @@ public class CuentaDTO {
     private String usuario;
 
     @JsonProperty("fechaCreacion")
-    //TODO: json tipo date ?
     private LocalDateTime fechaCreacion;
 
     @JsonProperty("nombre")
@@ -24,7 +23,12 @@ public class CuentaDTO {
     private String pass;
 
     @JsonCreator
-    public CuentaDTO(Integer idCuenta, String usuario, LocalDateTime fechaCreacion, String nombre, String pass) {
+    public CuentaDTO(
+            @JsonProperty("idCuenta") Integer idCuenta,
+            @JsonProperty("usuario") String usuario,
+            @JsonProperty("fechaCreacion") LocalDateTime fechaCreacion,
+            @JsonProperty("nombre") String nombre,
+            @JsonProperty("pass") String pass) {
         this.idCuenta = idCuenta;
         this.usuario = usuario;
         this.fechaCreacion = fechaCreacion;
