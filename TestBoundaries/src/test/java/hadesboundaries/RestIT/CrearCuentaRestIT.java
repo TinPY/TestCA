@@ -55,7 +55,7 @@ public class CrearCuentaRestIT {
     private String url = "http://localhost:8080";
 
     @Test
-    public void CrearCuenta_DatosCompletos_CreaDictado() throws Exception {
+    public void CrearCuenta_DatosCompletos_Ok200() throws Exception {
 
 //        CuentaDTO cuentaDTO = new CuentaDTO(1,"martinpy",LocalDateTime.now(),"Tincho","asdasd")
 //
