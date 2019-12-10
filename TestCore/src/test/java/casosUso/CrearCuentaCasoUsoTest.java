@@ -1,6 +1,7 @@
 package casosUso;
 
 import excepciones.CuentaExisteException;
+import excepciones.CuentaFechaCreacionPosteriorHoyException;
 import excepciones.CuentaIncompletaException;
 import mockito.MockitoExtension;
 import modelo.Cuenta;
@@ -25,7 +26,7 @@ public class CrearCuentaCasoUsoTest {
     IRepositorioConsultarCuentaPorUsuario iRepositorioConsultarCuentaPorUsuario;
 
     @Test
-    public void CrearCuenta_CuentaNoExiste_CreaCorrectamente() throws CuentaIncompletaException, CuentaExisteException {
+    public void CrearCuenta_CuentaNoExiste_CreaCorrectamente() throws CuentaIncompletaException, CuentaExisteException, CuentaFechaCreacionPosteriorHoyException {
 
         Cuenta cuentaNueva = Cuenta.instancia(1,"martinpy", LocalDateTime.now(),"Tincho","asdasd");
         when(iRepositorioCrearCuenta.persist(cuentaNueva)).thenReturn(true);
@@ -37,7 +38,7 @@ public class CrearCuentaCasoUsoTest {
     }
 
     @Test
-    public void CrearCuenta_CuentaExiste_NoSeCrea() throws CuentaIncompletaException, CuentaExisteException {
+    public void CrearCuenta_CuentaExiste_NoSeCrea() throws CuentaIncompletaException, CuentaExisteException, CuentaFechaCreacionPosteriorHoyException {
         Cuenta cuentaNueva = Cuenta.instancia(1,"martinpy", LocalDateTime.now(),"Tincho","asdasd");
         when(iRepositorioCrearCuenta.persist(cuentaNueva)).thenReturn(false);
         when(iRepositorioConsultarCuentaPorUsuario.findByUsuario("martinpy")).thenReturn(null);

@@ -1,5 +1,6 @@
 package modelo;
 
+import excepciones.CuentaFechaCreacionPosteriorHoyException;
 import excepciones.CuentaIncompletaException;
 import excepciones.CursoFechaLimiteAnteriorException;
 import excepciones.CursoIncompletoException;
@@ -51,6 +52,8 @@ public class CursoTest {
             cuentas.add(Cuenta.instancia(1,"martinpy", LocalDateTime.now(),"Tincho","asdasd"));
             cuentas.add(Cuenta.instancia(1,"felipem", LocalDateTime.now(),"Felipe Medina","qweqwe"));
         } catch (CuentaIncompletaException e) {
+            e.printStackTrace();
+        } catch (CuentaFechaCreacionPosteriorHoyException e) {
             e.printStackTrace();
         }
         return cuentas;

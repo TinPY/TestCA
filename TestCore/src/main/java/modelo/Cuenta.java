@@ -2,6 +2,7 @@ package modelo;
 
 import java.time.LocalDateTime;
 
+import excepciones.CuentaFechaCreacionPosteriorHoyException;
 import excepciones.CuentaIncompletaException;
 
 public class Cuenta {
@@ -20,9 +21,12 @@ public class Cuenta {
 		this.pass = pass;
 	}
 	
-	public static Cuenta instancia(Integer idCuenta, String usuario, LocalDateTime fechaCreacion, String nombre, String pass) throws CuentaIncompletaException {
+	public static Cuenta instancia(Integer idCuenta, String usuario, LocalDateTime fechaCreacion, String nombre, String pass) throws CuentaIncompletaException, CuentaFechaCreacionPosteriorHoyException {
 		if(usuario.isEmpty() || nombre.isEmpty() || pass.isEmpty()) {
 			throw new CuentaIncompletaException();
+		}
+		if(fechaCreacion.isAfter(LocalDateTime.now().plusDays(1).withHour(0).withMinute(0))){
+			throw new CuentaFechaCreacionPosteriorHoyException();
 		}
 		
 		return new Cuenta(idCuenta,usuario,fechaCreacion,nombre,pass);
