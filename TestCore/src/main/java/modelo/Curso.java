@@ -3,6 +3,7 @@ package modelo;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
+import excepciones.CursoFechaLimiteAnteriorException;
 import excepciones.CursoIncompletoException;
 
 public class Curso {
@@ -22,9 +23,19 @@ public class Curso {
 		this.puntos = puntos;
 	}
 	
-	public static Curso instancia(Integer idCurso, String titulo, Collection<Cuenta> inscriptos, LocalDateTime fechaLimiteInscripcion,Integer puntos) throws CursoIncompletoException {
-		if(titulo.isEmpty() || inscriptos == null || fechaLimiteInscripcion == null ) {
+	public static Curso instancia(Integer idCurso, String titulo, Collection<Cuenta> inscriptos, LocalDateTime fechaLimiteInscripcion,Integer puntos)
+			throws CursoIncompletoException, CursoFechaLimiteAnteriorException {
+		if(titulo.isEmpty() || inscriptos == null || fechaLimiteInscripcion == null || puntos == null ) {
 			throw new CursoIncompletoException();
+		}
+
+		if(fechaLimiteInscripcion.isBefore(LocalDateTime.now().withHour(0).withMinute(0))){
+			throw new CursoFechaLimiteAnteriorException();
+		}
+
+		// cantidad de inscriptos > 0
+		if(inscriptos != null){
+			inscriptos.clear();
 		}
 		
 		return new Curso(idCurso,titulo,inscriptos,fechaLimiteInscripcion,puntos);
