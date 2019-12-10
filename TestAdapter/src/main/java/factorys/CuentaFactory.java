@@ -17,4 +17,14 @@ public class CuentaFactory {
         }
         return null;
     }
+
+    public static CuentaDTO mapeoCoreDTO(Cuenta cuenta){
+        if(cuenta != null){
+            CuentaDTO cuentaDTO = new CuentaDTO(cuenta.getIdCuenta(),cuenta.getUsuario(),cuenta.getFechaCreacion(),cuenta.getNombre(),cuenta.getPass());
+            return cuentaDTO;
+        }
+        return null;
+    }
+
+
 }
