@@ -47,7 +47,12 @@ public class Cuenta {
 	public String getPass() {
 		return pass;
 	}
-	
-	
 
+
+	public void modificarDatos(Cuenta cuentaDatosNuevos) {
+		this.usuario = cuentaDatosNuevos.getUsuario();
+		this.fechaCreacion = cuentaDatosNuevos.getFechaCreacion();
+		this.nombre = cuentaDatosNuevos.getNombre();
+		this.pass = cuentaDatosNuevos.getPass();
+	}
 }
