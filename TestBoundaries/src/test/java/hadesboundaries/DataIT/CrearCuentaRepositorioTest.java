@@ -1,5 +1,6 @@
 package hadesboundaries.DataIT;
 
+import excepciones.CuentaFechaCreacionPosteriorHoyException;
 import excepciones.CuentaIncompletaException;
 import modelo.Cuenta;
 import org.junit.Test;
@@ -23,7 +24,7 @@ public class CrearCuentaRepositorioTest {
 
     @Test
     @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:scriptsSQL/CrearCuentaDespues.sql")
-    public void CrearCuenta_DatosCorrectos_CreaCorrectamente() throws CuentaIncompletaException {
+    public void CrearCuenta_DatosCorrectos_CreaCorrectamente() throws CuentaIncompletaException, CuentaFechaCreacionPosteriorHoyException {
 
         Cuenta cuenta = Cuenta.instancia(1,"martinpy", LocalDateTime.now(),"Tincho","asdasd");
         Assertions.assertTrue(crearCuentaRepositorioCRUDImplementacion.persist(cuenta));

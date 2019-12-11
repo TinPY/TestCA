@@ -1,5 +1,6 @@
 package testboundaries.data.mapeadores;
 
+import excepciones.CuentaFechaCreacionPosteriorHoyException;
 import excepciones.CuentaIncompletaException;
 import testboundaries.data.entidades.CuentaEntidad;
 import modelo.Cuenta;
@@ -18,6 +19,9 @@ public class CuentaMapeador {
         try {
             return Cuenta.instancia(cuentaEntidad.getIdCuenta(),cuentaEntidad.getUsuario(),cuentaEntidad.getFechaCreacion(),cuentaEntidad.getNombre(),cuentaEntidad.getPass());
         } catch (CuentaIncompletaException e) {
+            e.printStackTrace();
+            return null;
+        } catch (CuentaFechaCreacionPosteriorHoyException e) {
             e.printStackTrace();
             return null;
         }
