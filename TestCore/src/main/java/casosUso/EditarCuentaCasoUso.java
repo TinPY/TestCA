@@ -28,10 +28,6 @@ public class EditarCuentaCasoUso implements EditarCuentaInput {
         }else{
             throw new UpdateCuentaException();
         }
-
-
     }
-
-
 
 }

@@ -1,4 +1,4 @@
-package Adaptadores;
+package adaptadoresTest;
 
 import adaptadores.CrearCursoAdapter;
 import dto.CursoDTO;

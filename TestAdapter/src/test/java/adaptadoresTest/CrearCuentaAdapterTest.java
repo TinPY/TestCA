@@ -1,9 +1,8 @@
-package Adaptadores;
+package adaptadoresTest;
 
 import adaptadores.CrearCuentaAdapter;
 import dto.CuentaDTO;
 import excepciones.CuentaExisteException;
-import excepciones.CuentaIncompletaException;
 import inputs.CrearCuentaInput;
 import mockito.MockitoExtension;
 import modelo.Cuenta;

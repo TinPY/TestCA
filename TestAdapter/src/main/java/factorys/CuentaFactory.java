@@ -1,6 +1,7 @@
 package factorys;
 
 import dto.CuentaDTO;
+import excepciones.CuentaFechaCreacionPosteriorHoyException;
 import excepciones.CuentaIncompletaException;
 import modelo.Cuenta;
 
@@ -12,6 +13,8 @@ public class CuentaFactory {
             try {
                 return Cuenta.instancia(cuentaDTO.getIdCuenta(),cuentaDTO.getUsuario(),cuentaDTO.getFechaCreacion(),cuentaDTO.getNombre(),cuentaDTO.getPass());
             } catch (CuentaIncompletaException e) {
+                e.printStackTrace();
+            } catch (CuentaFechaCreacionPosteriorHoyException e) {
                 e.printStackTrace();
             }
         }
