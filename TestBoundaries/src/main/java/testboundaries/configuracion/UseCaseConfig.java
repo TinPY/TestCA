@@ -1,5 +1,6 @@
 package testboundaries.configuracion;
 
+import casosUso.ConsultarCuentasCasoUso;
 import casosUso.CrearCuentaCasoUso;
 import casosUso.CrearCursoCasoUso;
 import casosUso.EditarCuentaCasoUso;
@@ -26,6 +27,9 @@ public class UseCaseConfig {
     @Autowired
     private IRepositorioConsultarCuentaPorId iRepositorioConsultarCuentaPorId;
 
+    @Autowired
+    private IRepositorioConsultarCuentas iRepositorioConsultarCuentas;
+
     @Bean
     public CrearCuentaCasoUso crearCuentaCasoUso() {
         return new CrearCuentaCasoUso(iRepositorioCrearCuenta,iRepositorioConsultarCuentaPorUsuario);
@@ -38,5 +42,8 @@ public class UseCaseConfig {
 
     @Bean
     public EditarCuentaCasoUso editarCuentaCasoUso() { return new EditarCuentaCasoUso(iRepositorioEditarCuenta,iRepositorioConsultarCuentaPorId);}
+
+    @Bean
+    public ConsultarCuentasCasoUso consultarCuentasCasoUso() {return new ConsultarCuentasCasoUso(iRepositorioConsultarCuentas);}
 
 }

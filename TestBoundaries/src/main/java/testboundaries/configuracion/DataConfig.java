@@ -3,6 +3,7 @@ package testboundaries.configuracion;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import testboundaries.data.persistencia.implementacionCRUD.ConsultarCuentasRepositorioCRUDImplementacion;
 import testboundaries.data.persistencia.implementacionCRUD.CrearCuentaRepositorioCRUDImplementacion;
 import testboundaries.data.persistencia.implementacionCRUD.CrearCursoRepositorioCRUDImplementacion;
 import testboundaries.data.persistencia.implementacionCRUD.EditarCuentaRepositorioCRUDImplementacion;
@@ -24,6 +25,11 @@ public class DataConfig {
     @Bean
     public EditarCuentaRepositorioCRUDImplementacion editarCuentaRepositorioCRUDImplementacion(){
         return new EditarCuentaRepositorioCRUDImplementacion();
+    }
+
+    @Bean
+    public ConsultarCuentasRepositorioCRUDImplementacion consultarCuentasRepositorioCRUDImplementacion(){
+        return new ConsultarCuentasRepositorioCRUDImplementacion();
     }
 
 }

@@ -1,8 +1,10 @@
 package testboundaries.configuracion;
 
+import adaptadores.ConsultarCuentasAdapter;
 import adaptadores.CrearCuentaAdapter;
 import adaptadores.CrearCursoAdapter;
 import adaptadores.EditarCuentaAdapter;
+import inputs.ConsultarCuentasInput;
 import inputs.CrearCuentaInput;
 import inputs.CrearCursoInput;
 import inputs.EditarCuentaInput;
@@ -22,6 +24,9 @@ public class AdapterConfig {
     @Autowired
     private EditarCuentaInput editarCuentaInput;
 
+    @Autowired
+    private ConsultarCuentasInput consultarCuentasInput;
+
     @Bean
     public CrearCuentaAdapter crearCuentaAdapter() {
         return new CrearCuentaAdapter(crearCuentaInput);
@@ -33,6 +38,7 @@ public class AdapterConfig {
     @Bean
     public EditarCuentaAdapter editarCuentaAdapter() {return new EditarCuentaAdapter(editarCuentaInput);}
 
-
+    @Bean
+    public ConsultarCuentasAdapter consultarCuentasAdapter(){return new ConsultarCuentasAdapter(consultarCuentasInput);}
 
 }
