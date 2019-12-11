@@ -15,7 +15,8 @@ public class EditarCuentaAdapter {
         this.editarCuentaInput = editarCuentaInput;
     }
 
-    public Cuenta EditarCuenta(CuentaDTO cuentaDTO) throws CuentaIncompletaException, UpdateCuentaException {
-        return this.editarCuentaInput.EditarCuenta(CuentaFactory.mapeoDTOaCore(cuentaDTO));
+    public CuentaDTO EditarCuenta(CuentaDTO cuentaDTO) throws CuentaIncompletaException, UpdateCuentaException {
+        Cuenta cuentaEditada = editarCuentaInput.EditarCuenta(CuentaFactory.mapeoDTOaCore(cuentaDTO));
+        return CuentaFactory.mapeoCoreDTO(cuentaEditada);
     }
 }

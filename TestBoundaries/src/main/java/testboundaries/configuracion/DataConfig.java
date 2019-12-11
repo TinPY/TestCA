@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import testboundaries.data.persistencia.implementacionCRUD.CrearCuentaRepositorioCRUDImplementacion;
 import testboundaries.data.persistencia.implementacionCRUD.CrearCursoRepositorioCRUDImplementacion;
+import testboundaries.data.persistencia.implementacionCRUD.EditarCuentaRepositorioCRUDImplementacion;
 
 @Configuration
 @EnableTransactionManagement
@@ -20,5 +21,9 @@ public class DataConfig {
         return new CrearCursoRepositorioCRUDImplementacion();
     }
 
+    @Bean
+    public EditarCuentaRepositorioCRUDImplementacion editarCuentaRepositorioCRUDImplementacion(){
+        return new EditarCuentaRepositorioCRUDImplementacion();
+    }
 
 }
