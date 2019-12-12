@@ -27,7 +27,7 @@ public class EditarCursoAdapterTest {
     public EditarCursoInput editarCursoInput;
 
     @Test
-    public void CrearCuenta_DatosCorrectos_CrearCorrectamente() throws CursoFechaLimiteAnteriorException, CursoIncompletoException, UpdateCursoException {
+    public void CrearCuenta_DatosCorrectos_CrearCorrectamente() throws CursoFechaLimiteAnteriorException, CursoIncompletoException, UpdateCursoException, UpdateCursoFechaLimiteAnteriorException {
 
         CursoDTO cursoDTO = new CursoDTO(1,"Base de Datos 2", new ArrayList<>(),LocalDateTime.now().plusDays(5),80);
         when(editarCursoInput.EditarCurso(any(Curso.class))).thenReturn(Curso.instancia(1,"Base de Datos 2", new ArrayList<>(),LocalDateTime.now().plusDays(5),156));

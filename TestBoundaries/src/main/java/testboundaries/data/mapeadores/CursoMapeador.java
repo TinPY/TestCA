@@ -32,7 +32,7 @@ public class CursoMapeador {
         } catch (CursoIncompletoException e) {
             e.printStackTrace();
             return null;
-        } catch (CursoFechaLimiteAnteriorException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

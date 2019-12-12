@@ -44,7 +44,7 @@ public class ConsultarCursosAdapterTest {
             cursos.add(Curso.instancia(3,"Electronica Digital",new ArrayList<>(),LocalDateTime.now().plusDays(7),105));
         } catch (CursoIncompletoException e) {
             e.printStackTrace();
-        } catch (CursoFechaLimiteAnteriorException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

@@ -21,7 +21,7 @@ public class CursoFactory {
                 return Curso.instancia(cursoDTO.idCurso,cursoDTO.titulo,inscriptosCore,cursoDTO.fechaLimiteInscripcion,cursoDTO.puntos);
             } catch (CursoIncompletoException e) {
                 e.printStackTrace();
-            } catch (CursoFechaLimiteAnteriorException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

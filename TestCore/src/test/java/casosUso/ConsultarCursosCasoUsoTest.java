@@ -41,7 +41,7 @@ public class ConsultarCursosCasoUsoTest {
             cursos.add(Curso.instancia(2,"Arquitectura",new ArrayList<>(),LocalDateTime.now().plusDays(3),72));
         } catch (CursoIncompletoException e) {
             e.printStackTrace();
-        } catch (CursoFechaLimiteAnteriorException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

@@ -24,19 +24,21 @@ public class Curso {
 	}
 	
 	public static Curso instancia(Integer idCurso, String titulo, Collection<Cuenta> inscriptos, LocalDateTime fechaLimiteInscripcion,Integer puntos)
-			throws CursoIncompletoException, CursoFechaLimiteAnteriorException {
+			throws CursoIncompletoException {
 		if(titulo.isEmpty() || inscriptos == null || fechaLimiteInscripcion == null || puntos == null ) {
 			throw new CursoIncompletoException();
 		}
 
-		if(fechaLimiteInscripcion.isBefore(LocalDateTime.now().withHour(0).withMinute(0))){
-			throw new CursoFechaLimiteAnteriorException();
-		}
+//		TODO: PASAR a CASO DE USO CrearCurso
+//		if(fechaLimiteInscripcion.isBefore(LocalDateTime.now().withHour(0).withMinute(0))){
+//			throw new CursoFechaLimiteAnteriorException();
+//		}
 
 		// cantidad de inscriptos > 0
-		if(inscriptos != null){
-			inscriptos.clear();
-		}
+//		TODO: Pasar a Caso de Uso CrearCurso
+//		if(inscriptos != null){
+//			inscriptos.clear();
+//		}
 		
 		return new Curso(idCurso,titulo,inscriptos,fechaLimiteInscripcion,puntos);
 	}
