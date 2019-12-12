@@ -19,7 +19,7 @@ public class ConsultarCuentaPorIdRepositorioCRUDImplementacion implements IRepos
         CuentaEntidad cuentaEntidad = this.iConsultarCuentaPorIdCRUD.findByIdCuenta(idCuenta);
 
         if(cuentaEntidad != null){
-            return CuentaMapeador.mapeoEntidadCore(cuentaEntidad);
+            return CuentaMapeador.mapearEntidadCore(cuentaEntidad);
         }
         return null;
     }

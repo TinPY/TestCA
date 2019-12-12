@@ -22,10 +22,10 @@ public class CursoMapeador {
 
     }
 
-    public static Curso mapeoEntidadCore(CursoEntidad cursoEntidad) {
+    public static Curso mapearEntidadCore(CursoEntidad cursoEntidad) {
 
         List<Cuenta> inscriptosCore = new ArrayList<>();
-        cursoEntidad.getInscriptos().forEach(i-> inscriptosCore.add(CuentaMapeador.mapeoEntidadCore(i)));
+        cursoEntidad.getInscriptos().forEach(i-> inscriptosCore.add(CuentaMapeador.mapearEntidadCore(i)));
 
         try {
             return Curso.instancia(cursoEntidad.getIdCurso(),cursoEntidad.getTitulo(),inscriptosCore,cursoEntidad.getFechaLimiteInscripcion(),cursoEntidad.getPuntos());

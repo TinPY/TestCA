@@ -22,7 +22,7 @@ public class ConsultarCuentasRepositorioCRUDImplementacion implements IRepositor
 
         List<Cuenta> cuentas = new ArrayList<>();
 
-        this.iConsultarCuentasCRUD.findAll().forEach(c -> cuentas.add(CuentaMapeador.mapeoEntidadCore(c)));
+        this.iConsultarCuentasCRUD.findAll().forEach(c -> cuentas.add(CuentaMapeador.mapearEntidadCore(c)));
 
         return cuentas;
 

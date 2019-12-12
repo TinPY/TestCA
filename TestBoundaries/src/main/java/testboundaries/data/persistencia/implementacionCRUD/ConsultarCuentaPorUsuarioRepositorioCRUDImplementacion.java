@@ -18,7 +18,7 @@ public class ConsultarCuentaPorUsuarioRepositorioCRUDImplementacion implements I
     public Cuenta findByUsuario(String usuario) {
         CuentaEntidad cuentaEntidad = this.iConsultarCuentaPorUsuarioRepositorioCRUD.findByUsuario(usuario);
         if(cuentaEntidad != null){
-            return CuentaMapeador.mapeoEntidadCore(cuentaEntidad);
+            return CuentaMapeador.mapearEntidadCore(cuentaEntidad);
         }
         return null;
     }
