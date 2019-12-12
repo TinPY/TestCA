@@ -14,7 +14,7 @@ public class CuentaMapeador {
 
     }
 
-    public static Cuenta mapeoDataCore(CuentaEntidad cuentaEntidad) {
+    public static Cuenta mapeoEntidadCore(CuentaEntidad cuentaEntidad) {
 
         try {
             return Cuenta.instancia(cuentaEntidad.getIdCuenta(),cuentaEntidad.getUsuario(),cuentaEntidad.getFechaCreacion(),cuentaEntidad.getNombre(),cuentaEntidad.getPass());
