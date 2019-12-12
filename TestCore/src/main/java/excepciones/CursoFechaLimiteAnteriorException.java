@@ -1,4 +1,4 @@
 package excepciones;
 
-public class CursoFechaLimiteAnteriorException extends Throwable {
+public class CursoFechaLimiteAnteriorException extends Exception {
 }

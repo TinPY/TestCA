@@ -60,4 +60,12 @@ public class Curso {
 	public Integer getPuntos() {
 		return puntos;
 	}
+
+	public void modificarDatos(Curso cursoDatosNuevos) {
+		this.idCurso = cursoDatosNuevos.getIdCurso();
+		this.fechaLimiteInscripcion = cursoDatosNuevos.getFechaLimiteInscripcion();
+		this.titulo = cursoDatosNuevos.getTitulo();
+		this.inscriptos = cursoDatosNuevos.getInscriptos();
+		this.puntos = cursoDatosNuevos.getPuntos();
+	}
 }

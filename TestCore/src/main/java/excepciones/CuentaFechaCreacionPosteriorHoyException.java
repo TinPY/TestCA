@@ -1,4 +1,4 @@
 package excepciones;
 
-public class CuentaFechaCreacionPosteriorHoyException extends Throwable {
+public class CuentaFechaCreacionPosteriorHoyException extends Exception {
 }
