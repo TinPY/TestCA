@@ -25,7 +25,7 @@ public class CursoMapeador {
     public static Curso mapeoEntidadCore(CursoEntidad cursoEntidad) {
 
         List<Cuenta> inscriptosCore = new ArrayList<>();
-        cursoEntidad.getInscriptos().forEach(i-> inscriptosCore.add(CuentaMapeador.mapeoDataCore(i)));
+        cursoEntidad.getInscriptos().forEach(i-> inscriptosCore.add(CuentaMapeador.mapeoEntidadCore(i)));
 
         try {
             return Curso.instancia(cursoEntidad.getIdCurso(),cursoEntidad.getTitulo(),inscriptosCore,cursoEntidad.getFechaLimiteInscripcion(),cursoEntidad.getPuntos());

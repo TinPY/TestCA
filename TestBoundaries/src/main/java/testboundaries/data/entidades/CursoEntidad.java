@@ -18,7 +18,7 @@ public class CursoEntidad {
     @Column(name = "titulo")
     private String titulo;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name="inscripciones",
             joinColumns=@JoinColumn(name="idcurso", referencedColumnName="idcurso"),
