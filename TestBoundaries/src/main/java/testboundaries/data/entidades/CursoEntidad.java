@@ -1,7 +1,5 @@
 package testboundaries.data.entidades;
 
-import dto.CuentaDTO;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -18,7 +16,7 @@ public class CursoEntidad {
     @Column(name = "titulo")
     private String titulo;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(
             name="inscripciones",
             joinColumns=@JoinColumn(name="idcurso", referencedColumnName="idcurso"),

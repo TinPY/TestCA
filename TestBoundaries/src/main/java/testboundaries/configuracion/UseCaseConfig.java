@@ -30,6 +30,12 @@ public class UseCaseConfig {
     @Autowired
     private IRepositorioConsultarCursos iRepositorioConsultarCursos;
 
+    @Autowired
+    private IRepositorioEditarCurso iRepositorioEditarCurso;
+
+    @Autowired
+    private IRepositorioConsultarCursoPorId iRepositorioConsultarCursoPorId;
+
     @Bean
     public CrearCuentaCasoUso crearCuentaCasoUso() { return new CrearCuentaCasoUso(iRepositorioCrearCuenta,iRepositorioConsultarCuentaPorUsuario); }
 
@@ -46,5 +52,8 @@ public class UseCaseConfig {
 
     @Bean
     public ConsultarCursosCasoUso consultarCursosCasoUso() {return new ConsultarCursosCasoUso(iRepositorioConsultarCursos);}
+
+    @Bean
+    public EditarCursoCasoUso editarCursoCasoUso() {return new EditarCursoCasoUso(iRepositorioEditarCurso,iRepositorioConsultarCursoPorId);}
 
 }

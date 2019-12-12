@@ -14,8 +14,8 @@ public class EditarCursoAdapter {
         this.editarCursoInput = editarCursoInput;
     }
 
-    public CursoDTO EditarCurso(CursoDTO cursoTO) throws UpdateCursoException {
-        Curso curso = this.editarCursoInput.EditarCurso(CursoFactory.mapeoDTOCore(cursoTO));
+    public CursoDTO EditarCurso(CursoDTO cursoDTO) throws UpdateCursoException {
+        Curso curso = this.editarCursoInput.EditarCurso(CursoFactory.mapeoDTOCore(cursoDTO));
         return CursoFactory.mapeoCoreDTO(curso);
     }
 }

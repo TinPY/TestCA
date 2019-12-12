@@ -34,4 +34,9 @@ public class DataConfig {
         return new ConsultarCursosRepositorioCRUDImplementacion();
     }
 
+    @Bean
+    public EditarCursoRepositorioCRUDImplementacion editarCursoRepositorioCRUDImplementacion(){
+        return new EditarCursoRepositorioCRUDImplementacion();
+    }
+
 }

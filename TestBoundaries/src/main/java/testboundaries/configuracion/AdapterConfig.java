@@ -24,6 +24,10 @@ public class AdapterConfig {
     @Autowired
     private ConsultarCursosInput consultarCursosInput;
 
+    @Autowired
+    private EditarCursoInput editarCursoInput;
+
+
     @Bean
     public CrearCuentaAdapter crearCuentaAdapter() {
         return new CrearCuentaAdapter(crearCuentaInput);
@@ -40,5 +44,8 @@ public class AdapterConfig {
 
     @Bean
     public ConsultarCursosAdapter consultarCursosAdapter() {return new ConsultarCursosAdapter(consultarCursosInput);}
+
+    @Bean
+    public EditarCursoAdapter editarCursoAdapter() {return new EditarCursoAdapter(editarCursoInput);}
 
 }
