@@ -1,5 +1,6 @@
 package factorys;
 
+import dto.CuentaDTO;
 import dto.CursoDTO;
 import excepciones.CursoFechaLimiteAnteriorException;
 import excepciones.CursoIncompletoException;
@@ -10,13 +11,13 @@ import java.util.*;
 
 public class CursoFactory {
 
-    public static Curso mapeoDTOaCore(CursoDTO cursoDTO) {
+    public static Curso mapeoDTOCore(CursoDTO cursoDTO) {
 
         List<Cuenta> inscriptosCore = new ArrayList<>();
-        cursoDTO.inscriptos.forEach( i -> inscriptosCore.add(CuentaFactory.mapeoDTOaCore(i)));
 
         if (cursoDTO != null) {
             try {
+                cursoDTO.inscriptos.forEach( i -> inscriptosCore.add(CuentaFactory.mapeoDTOaCore(i)));
                 return Curso.instancia(cursoDTO.idCurso,cursoDTO.titulo,inscriptosCore,cursoDTO.fechaLimiteInscripcion,cursoDTO.puntos);
             } catch (CursoIncompletoException e) {
                 e.printStackTrace();
@@ -28,4 +29,14 @@ public class CursoFactory {
     }
 
 
+    public static CursoDTO mapeoCoreDTO(Curso curso) {
+
+        List<CuentaDTO> inscriptosDTO = new ArrayList<>();
+
+        if(curso != null){
+            curso.getInscriptos().forEach(i -> inscriptosDTO.add(CuentaFactory.mapeoCoreDTO(i)));
+            return new CursoDTO(curso.getIdCurso(),curso.getTitulo(),inscriptosDTO,curso.getFechaLimiteInscripcion(),curso.getPuntos());
+        }
+        return null;
+    }
 }
