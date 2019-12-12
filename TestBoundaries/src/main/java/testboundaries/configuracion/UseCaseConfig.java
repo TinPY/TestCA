@@ -1,9 +1,6 @@
 package testboundaries.configuracion;
 
-import casosUso.ConsultarCuentasCasoUso;
-import casosUso.CrearCuentaCasoUso;
-import casosUso.CrearCursoCasoUso;
-import casosUso.EditarCuentaCasoUso;
+import casosUso.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,10 +27,11 @@ public class UseCaseConfig {
     @Autowired
     private IRepositorioConsultarCuentas iRepositorioConsultarCuentas;
 
+    @Autowired
+    private IRepositorioConsultarCursos iRepositorioConsultarCursos;
+
     @Bean
-    public CrearCuentaCasoUso crearCuentaCasoUso() {
-        return new CrearCuentaCasoUso(iRepositorioCrearCuenta,iRepositorioConsultarCuentaPorUsuario);
-    }
+    public CrearCuentaCasoUso crearCuentaCasoUso() { return new CrearCuentaCasoUso(iRepositorioCrearCuenta,iRepositorioConsultarCuentaPorUsuario); }
 
     @Bean
     public CrearCursoCasoUso crearCursoCasoUso(){
@@ -45,5 +43,8 @@ public class UseCaseConfig {
 
     @Bean
     public ConsultarCuentasCasoUso consultarCuentasCasoUso() {return new ConsultarCuentasCasoUso(iRepositorioConsultarCuentas);}
+
+    @Bean
+    public ConsultarCursosCasoUso consultarCursosCasoUso() {return new ConsultarCursosCasoUso(iRepositorioConsultarCursos);}
 
 }
