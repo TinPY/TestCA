@@ -78,4 +78,9 @@ public class UseCaseConfig {
         return new ConsultarPromedioInscriptosCasoUso(iRepositorioConsultarCursos);
     }
 
+    @Bean
+    public ConsultarCursoCantidadMaximaInscriptosCasoUso consultarCursoCantidadMaximaInscriptosCasoUso(){
+        return new ConsultarCursoCantidadMaximaInscriptosCasoUso(iRepositorioConsultarCursos);
+    }
+
 }
