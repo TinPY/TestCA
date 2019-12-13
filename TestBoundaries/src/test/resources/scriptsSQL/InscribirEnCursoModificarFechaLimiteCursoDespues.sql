@@ -1,0 +1,1 @@
+update curso set fechalimiteinscripcion='2020-12-31 00:00:00' where idcurso=1

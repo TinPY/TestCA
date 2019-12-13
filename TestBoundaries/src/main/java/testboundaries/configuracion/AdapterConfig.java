@@ -27,6 +27,9 @@ public class AdapterConfig {
     @Autowired
     private EditarCursoInput editarCursoInput;
 
+    @Autowired
+    private InscribirEnCursoInput inscribirEnCursoInput;
+
 
     @Bean
     public CrearCuentaAdapter crearCuentaAdapter() {
@@ -47,5 +50,8 @@ public class AdapterConfig {
 
     @Bean
     public EditarCursoAdapter editarCursoAdapter() {return new EditarCursoAdapter(editarCursoInput);}
+
+    @Bean
+    public InscribirEnCursoAdapter inscribirEnCursoAdapter() {return new InscribirEnCursoAdapter(inscribirEnCursoInput);}
 
 }

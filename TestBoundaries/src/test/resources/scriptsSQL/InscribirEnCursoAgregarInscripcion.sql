@@ -1,0 +1,1 @@
+insert into inscripciones values (1,1);
