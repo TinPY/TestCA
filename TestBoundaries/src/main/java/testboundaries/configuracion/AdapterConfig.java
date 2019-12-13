@@ -30,6 +30,8 @@ public class AdapterConfig {
     @Autowired
     private InscribirEnCursoInput inscribirEnCursoInput;
 
+    @Autowired
+    private ConsultarPuntosPorIdCuentaInput consultarPuntosPorIdCuentaInput;
 
     @Bean
     public CrearCuentaAdapter crearCuentaAdapter() {
@@ -53,5 +55,8 @@ public class AdapterConfig {
 
     @Bean
     public InscribirEnCursoAdapter inscribirEnCursoAdapter() {return new InscribirEnCursoAdapter(inscribirEnCursoInput);}
+
+    @Bean
+    public ConsultarPuntosPorIdCuentaAdapter consultarPuntosPorIdCuentaAdapter() {return new ConsultarPuntosPorIdCuentaAdapter(consultarPuntosPorIdCuentaInput);}
 
 }

@@ -68,5 +68,9 @@ public class UseCaseConfig {
             iRepositorioEditarCurso);
     }
 
+    @Bean
+    public ConsultarPuntosPorIdCuentaCasoUso consultarPuntosPorIdCuentaCasoUso(){
+        return new ConsultarPuntosPorIdCuentaCasoUso(iRepositorioConsultarInscripcionesPorIdCuenta);
+    }
 
 }
