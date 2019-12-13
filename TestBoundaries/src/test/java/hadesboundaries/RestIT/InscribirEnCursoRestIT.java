@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes={TestBoundariesApplication.class})
 @AutoConfigureMockMvc
 @SqlGroup({
-        @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:scriptsSQL/InscribirEnCursoAntes.sql"),
+        //@Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:scriptsSQL/InscribirEnCursoAntes.sql"),
         //@Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:scriptsSQL/InscribirEnCursoDespues.sql")
 })
 public class InscribirEnCursoRestIT {
@@ -42,7 +42,7 @@ public class InscribirEnCursoRestIT {
 
     @Test
     @SqlGroup({
-            //@Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:scriptsSQL/InscribirEnCursoAgregarInscripcion.sql"),
+            @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:scriptsSQL/InscribirEnCursoAntes.sql"),
             @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:scriptsSQL/InscribirEnCursoSacarInscripcion.sql")
     })
     public void InscribirEnCurso_ParametrosCompletosCorrectos_Ok200() throws Exception {
@@ -58,7 +58,9 @@ public class InscribirEnCursoRestIT {
 
     @Test
     @SqlGroup({
-            @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:scriptsSQL/InscribirEnCursoAgregarInscripcion.sql"),
+            @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = {
+                    "classpath:scriptsSQL/InscribirEnCursoAntes.sql"
+                    ,"classpath:scriptsSQL/InscribirEnCursoAgregarInscripcion.sql"}),
             @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:scriptsSQL/InscribirEnCursoSacarInscripcion.sql")
     })
     public void InscribirEnCurso_ParametrosCompletosYaInscripto_InscripcionACursoExistenteException_Conflict409() throws Exception {
@@ -74,7 +76,7 @@ public class InscribirEnCursoRestIT {
 
     @Test
     @SqlGroup({
-            //@Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:scriptsSQL/InscribirEnCursoAgregarInscripcion.sql"),
+            @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:scriptsSQL/InscribirEnCursoAntes.sql"),
             @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:scriptsSQL/InscribirEnCursoSacarInscripcion.sql")
     })
     public void InscribirEnCurso_ParametrosCompletosPassIncorrecta_Forbidden403() throws Exception {
@@ -90,7 +92,9 @@ public class InscribirEnCursoRestIT {
 
     @Test
     @SqlGroup({
-            @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:scriptsSQL/InscribirEnCursoModificarFechaLimiteCurso.sql"),
+            @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = {
+                    "classpath:scriptsSQL/InscribirEnCursoAntes.sql",
+                    "classpath:scriptsSQL/InscribirEnCursoModificarFechaLimiteCurso.sql"}),
             @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:scriptsSQL/InscribirEnCursoModificarFechaLimiteCursoDespues.sql")
     })
     public void InscribirEnCurso_ParametrosCompletosCursoFechaLimiteVencida_PRECONDITION_FAILED412() throws Exception {
