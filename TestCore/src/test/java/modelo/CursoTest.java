@@ -35,16 +35,8 @@ public class CursoTest {
     public void instanciaCurso_ColeccionInscriptosConElementos_ColeccionVaciada() throws CursoFechaLimiteAnteriorException, CursoIncompletoException {
         Curso curso = Curso.instancia(1,"Algoritmos", factoryInscriptos(),LocalDateTime.now(),95);
         Assertions.assertNotNull(curso.getInscriptos());
-        Assertions.assertEquals(0,curso.getInscriptos().size());
+        Assertions.assertEquals(2,curso.getInscriptos().size());
     }
-
-    @Test
-    public void instanciaCurso_fechaLimiteInferiorActual(){
-        Assertions.assertThrows(CursoFechaLimiteAnteriorException.class,
-                () -> Curso.instancia(1,"Historia",new HashSet<>(),LocalDateTime.now().minusDays(1),95)
-        );
-    }
-
 
     private Collection<Cuenta> factoryInscriptos(){
         Set<Cuenta> cuentas = new HashSet<>();
