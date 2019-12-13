@@ -23,11 +23,11 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class InscribirseCursoCasoUsoTest  {
 
-//    @Mock
-//    IRepositorioConsultarCursoPorId iRepositorioConsultarCursoPorId;
-//
-//    @Mock
-//    IRepositorioConsultarCuentaPorId iRepositorioConsultarCuentaPorId;
+    @Mock
+    IRepositorioConsultarCursoPorId iRepositorioConsultarCursoPorId;
+
+    @Mock
+    IRepositorioConsultarCuentaPorId iRepositorioConsultarCuentaPorId;
 
     @Mock
     IRepositorioConsultarInscripcionesPorIdCuenta iRepositorioConsultarInscripcionesPorIdCuenta;
@@ -41,12 +41,18 @@ public class InscribirseCursoCasoUsoTest  {
         Curso cursoAInscribir = Curso.instancia(100,"Algoritmos",new ArrayList<>(), LocalDateTime.now(),100);
         Cuenta cuentaAInscribir = Cuenta.instancia(1,"martinpy",LocalDateTime.now(),"Martin PY","asdasd");
 
+        when(iRepositorioConsultarCursoPorId.findByIdCurso(100)).thenReturn(cursoAInscribir);
+        when(iRepositorioConsultarCuentaPorId.findByIdCuenta(1)).thenReturn(cuentaAInscribir);
         when(iRepositorioConsultarInscripcionesPorIdCuenta.findByInscriptos_IdCuenta(1)).thenReturn(factoryCursosInscriptos());
         when(iRepositorioEditarCurso.update(cursoAInscribir)).thenReturn(true);
 
-        InscribirEnCursoCasoUso inscribirEnCursoCasoUso = new InscribirEnCursoCasoUso(iRepositorioConsultarInscripcionesPorIdCuenta,iRepositorioEditarCurso);
+        InscribirEnCursoCasoUso inscribirEnCursoCasoUso = new InscribirEnCursoCasoUso(
+                iRepositorioConsultarCursoPorId,
+                iRepositorioConsultarCuentaPorId,
+                iRepositorioConsultarInscripcionesPorIdCuenta,
+                iRepositorioEditarCurso);
 
-        inscribirEnCursoCasoUso.InscribirEnCurso(cursoAInscribir,cuentaAInscribir,"asdasd");
+        inscribirEnCursoCasoUso.InscribirEnCurso(100,1,"asdasd");
 
     }
 
@@ -55,14 +61,20 @@ public class InscribirseCursoCasoUsoTest  {
         Curso cursoAInscribir = Curso.instancia(1,"Base de Datos",new ArrayList<>(),LocalDateTime.now().plusDays(10),125);
         Cuenta cuentaAInscribir = Cuenta.instancia(1,"martinpy",LocalDateTime.now(),"Martin PY","asdasd");
 
+        when(iRepositorioConsultarCursoPorId.findByIdCurso(1)).thenReturn(cursoAInscribir);
+        when(iRepositorioConsultarCuentaPorId.findByIdCuenta(1)).thenReturn(cuentaAInscribir);
         when(iRepositorioConsultarInscripcionesPorIdCuenta.findByInscriptos_IdCuenta(1)).thenReturn(factoryCursosInscriptos());
         when(iRepositorioEditarCurso.update(cursoAInscribir)).thenReturn(true);
 
-        InscribirEnCursoCasoUso inscribirEnCursoCasoUso = new InscribirEnCursoCasoUso(iRepositorioConsultarInscripcionesPorIdCuenta,iRepositorioEditarCurso);
+        InscribirEnCursoCasoUso inscribirEnCursoCasoUso = new InscribirEnCursoCasoUso(
+                iRepositorioConsultarCursoPorId,
+                iRepositorioConsultarCuentaPorId,
+                iRepositorioConsultarInscripcionesPorIdCuenta,
+                iRepositorioEditarCurso);
 
         //inscribirEnCursoCasoUso.InscribirEnCurso(cursoAInscribir,cuentaAInscribir,"asdasd");
 
-        Assertions.assertThrows(InscripcionACursoExistenteException.class, () -> inscribirEnCursoCasoUso.InscribirEnCurso(cursoAInscribir,cuentaAInscribir,"asdasd"));
+        Assertions.assertThrows(InscripcionACursoExistenteException.class, () -> inscribirEnCursoCasoUso.InscribirEnCurso(1,1,"asdasd"));
     }
 
     @Test
@@ -70,14 +82,20 @@ public class InscribirseCursoCasoUsoTest  {
         Curso cursoAInscribir = Curso.instancia(100,"Algoritmos",new ArrayList<>(), LocalDateTime.now().minusDays(20),100);
         Cuenta cuentaAInscribir = Cuenta.instancia(1,"martinpy",LocalDateTime.now(),"Martin PY","asdasd");
 
+        when(iRepositorioConsultarCursoPorId.findByIdCurso(100)).thenReturn(cursoAInscribir);
+        when(iRepositorioConsultarCuentaPorId.findByIdCuenta(1)).thenReturn(cuentaAInscribir);
         when(iRepositorioConsultarInscripcionesPorIdCuenta.findByInscriptos_IdCuenta(1)).thenReturn(factoryCursosInscriptos());
         when(iRepositorioEditarCurso.update(cursoAInscribir)).thenReturn(true);
 
-        InscribirEnCursoCasoUso inscribirEnCursoCasoUso = new InscribirEnCursoCasoUso(iRepositorioConsultarInscripcionesPorIdCuenta,iRepositorioEditarCurso);
+        InscribirEnCursoCasoUso inscribirEnCursoCasoUso = new InscribirEnCursoCasoUso(
+                iRepositorioConsultarCursoPorId,
+                iRepositorioConsultarCuentaPorId,
+                iRepositorioConsultarInscripcionesPorIdCuenta,
+                iRepositorioEditarCurso);
 
         //inscribirEnCursoCasoUso.InscribirEnCurso(cursoAInscribir,cuentaAInscribir,"asdasd");
 
-        Assertions.assertThrows(InscripcionACursoFechaLimiteVencidaException.class, () -> inscribirEnCursoCasoUso.InscribirEnCurso(cursoAInscribir,cuentaAInscribir,"asdasd"));
+        Assertions.assertThrows(InscripcionACursoFechaLimiteVencidaException.class, () -> inscribirEnCursoCasoUso.InscribirEnCurso(100,1,"asdasd"));
     }
 
 
@@ -87,12 +105,18 @@ public class InscribirseCursoCasoUsoTest  {
         Curso cursoAInscribir = Curso.instancia(100,"Algoritmos",new ArrayList<>(), LocalDateTime.now(),100);
         Cuenta cuentaAInscribir = Cuenta.instancia(1,"martinpy",LocalDateTime.now(),"Martin PY","asdasd");
 
+        when(iRepositorioConsultarCursoPorId.findByIdCurso(100)).thenReturn(cursoAInscribir);
+        when(iRepositorioConsultarCuentaPorId.findByIdCuenta(1)).thenReturn(cuentaAInscribir);
         when(iRepositorioConsultarInscripcionesPorIdCuenta.findByInscriptos_IdCuenta(1)).thenReturn(factoryCursosInscriptos());
         when(iRepositorioEditarCurso.update(cursoAInscribir)).thenReturn(true);
 
-        InscribirEnCursoCasoUso inscribirEnCursoCasoUso = new InscribirEnCursoCasoUso(iRepositorioConsultarInscripcionesPorIdCuenta,iRepositorioEditarCurso);
+        InscribirEnCursoCasoUso inscribirEnCursoCasoUso = new InscribirEnCursoCasoUso(
+                iRepositorioConsultarCursoPorId,
+                iRepositorioConsultarCuentaPorId,
+                iRepositorioConsultarInscripcionesPorIdCuenta,
+                iRepositorioEditarCurso);
 
-        Assertions.assertThrows(PassIncorrectaException.class, () -> inscribirEnCursoCasoUso.InscribirEnCurso(cursoAInscribir,cuentaAInscribir,"QWEQWE"));
+        Assertions.assertThrows(PassIncorrectaException.class, () -> inscribirEnCursoCasoUso.InscribirEnCurso(100,1,"QWEQWE"));
 
     }
 

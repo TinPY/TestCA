@@ -9,7 +9,7 @@ import modelo.Curso;
 
 public interface InscribirEnCursoInput {
 
-    boolean InscribirEnCurso(Curso curso, Cuenta cuenta, String pass) throws
+    boolean InscribirEnCurso(Integer idCurso, Integer idCuenta, String pass) throws
             InscripcionACursoExistenteException,
             InscripcionACursoFechaLimiteVencidaException,
             PassIncorrectaException,

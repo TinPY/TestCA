@@ -18,25 +18,27 @@ import java.util.List;
 
 public class InscribirEnCursoCasoUso implements InscribirEnCursoInput {
 
-    //private IRepositorioConsultarCursoPorId iRepositorioConsultarCursoPorId;
-    //private IRepositorioConsultarCuentaPorId iRepositorioConsultarCuentaPorId;
+    private IRepositorioConsultarCursoPorId iRepositorioConsultarCursoPorId;
+    private IRepositorioConsultarCuentaPorId iRepositorioConsultarCuentaPorId;
     private IRepositorioConsultarInscripcionesPorIdCuenta iRepositorioConsultarInscripcionesPorIdCuenta;
     private IRepositorioEditarCurso iRepositorioEditarCurso;
 
     public InscribirEnCursoCasoUso(
+            IRepositorioConsultarCursoPorId iRepositorioConsultarCursoPorId,
+            IRepositorioConsultarCuentaPorId iRepositorioConsultarCuentaPorId,
             IRepositorioConsultarInscripcionesPorIdCuenta iRepositorioConsultarInscripcionesPorIdCuenta,
             IRepositorioEditarCurso iRepositorioEditarCurso) {
-        //this.iRepositorioConsultarCursoPorId = iRepositorioConsultarCursoPorId;
-        //this.iRepositorioConsultarCuentaPorId = iRepositorioConsultarCuentaPorId;
+        this.iRepositorioConsultarCursoPorId = iRepositorioConsultarCursoPorId;
+        this.iRepositorioConsultarCuentaPorId = iRepositorioConsultarCuentaPorId;
         this.iRepositorioConsultarInscripcionesPorIdCuenta = iRepositorioConsultarInscripcionesPorIdCuenta;
         this.iRepositorioEditarCurso = iRepositorioEditarCurso;
     }
 
     @Override
-    public boolean InscribirEnCurso(Curso curso, Cuenta cuenta, String pass) throws InscripcionACursoExistenteException, InscripcionACursoFechaLimiteVencidaException, PassIncorrectaException, UpdateCursoException {
+    public boolean InscribirEnCurso(Integer idCurso, Integer idCuenta, String pass) throws InscripcionACursoExistenteException, InscripcionACursoFechaLimiteVencidaException, PassIncorrectaException, UpdateCursoException {
 
-        //Curso cursoRecuperado = this.iRepositorioConsultarCursoPorId.findByIdCurso(curso.getIdCurso());
-        //Cuenta cuentaRecuperado = this.iRepositorioConsultarCuentaPorId.findByIdCuenta(cuenta.getIdCuenta());
+        Curso curso = this.iRepositorioConsultarCursoPorId.findByIdCurso(idCurso);
+        Cuenta cuenta = this.iRepositorioConsultarCuentaPorId.findByIdCuenta(idCuenta);
 
         // Pass no corresponde
         if(!cuenta.getPass().equals(pass)){
