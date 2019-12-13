@@ -73,4 +73,9 @@ public class UseCaseConfig {
         return new ConsultarPuntosPorIdCuentaCasoUso(iRepositorioConsultarInscripcionesPorIdCuenta);
     }
 
+    @Bean
+    public ConsultarPromedioInscriptosCasoUso consultarPromedioInscriptosCasoUso(){
+        return new ConsultarPromedioInscriptosCasoUso(iRepositorioConsultarCursos);
+    }
+
 }

@@ -33,6 +33,9 @@ public class AdapterConfig {
     @Autowired
     private ConsultarPuntosPorIdCuentaInput consultarPuntosPorIdCuentaInput;
 
+    @Autowired
+    private ConsultarPromedioInscriptosInput consultarPromedioInscriptosInput;
+
     @Bean
     public CrearCuentaAdapter crearCuentaAdapter() {
         return new CrearCuentaAdapter(crearCuentaInput);
@@ -58,5 +61,8 @@ public class AdapterConfig {
 
     @Bean
     public ConsultarPuntosPorIdCuentaAdapter consultarPuntosPorIdCuentaAdapter() {return new ConsultarPuntosPorIdCuentaAdapter(consultarPuntosPorIdCuentaInput);}
+
+    @Bean
+    public ConsultarPromedioInscriptosAdapter consultarPromedioInscriptosAdapter() {return new ConsultarPromedioInscriptosAdapter(consultarPromedioInscriptosInput);}
 
 }
