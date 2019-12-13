@@ -39,6 +39,9 @@ public class AdapterConfig {
     @Autowired
     private ConsultarCursoCantidadMaximaInscriptosInput consultarCursoCantidadMaximaInscriptosInput;
 
+    @Autowired
+    private ConsultarCursoCantidadMinimaInscriptosInput consultarCursoCantidadMinimaInscriptosInput;
+
     @Bean
     public CrearCuentaAdapter crearCuentaAdapter() {
         return new CrearCuentaAdapter(crearCuentaInput);
@@ -70,5 +73,8 @@ public class AdapterConfig {
 
     @Bean
     public ConsultarCursoCantidadMaximaInscriptosAdapter consultarCursoCantidadMaximaInscriptosAdapter() {return new ConsultarCursoCantidadMaximaInscriptosAdapter(consultarCursoCantidadMaximaInscriptosInput);}
+
+    @Bean
+    public ConsultarCursoCantidadMinimaInscriptosAdapter consultarCursoCantidadMinimaInscriptosAdapter() {return new ConsultarCursoCantidadMinimaInscriptosAdapter(consultarCursoCantidadMinimaInscriptosInput);}
 
 }
