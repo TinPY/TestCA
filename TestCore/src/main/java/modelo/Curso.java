@@ -70,4 +70,8 @@ public class Curso {
 		this.inscriptos = cursoDatosNuevos.getInscriptos();
 		this.puntos = cursoDatosNuevos.getPuntos();
 	}
+
+	public void inscribirCuenta(Cuenta cuenta){
+		this.inscriptos.add(cuenta);
+	}
 }
