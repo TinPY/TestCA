@@ -17,7 +17,9 @@ public class CursoFactory {
 
         if (cursoDTO != null) {
             try {
-                cursoDTO.inscriptos.forEach( i -> inscriptosCore.add(CuentaFactory.mapeoDTOaCore(i)));
+                if(cursoDTO.inscriptos != null){
+                    cursoDTO.inscriptos.forEach( i -> inscriptosCore.add(CuentaFactory.mapeoDTOaCore(i)));
+                }
                 return Curso.instancia(cursoDTO.idCurso,cursoDTO.titulo,inscriptosCore,cursoDTO.fechaLimiteInscripcion,cursoDTO.puntos);
             } catch (CursoIncompletoException e) {
                 e.printStackTrace();
